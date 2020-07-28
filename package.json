@@ -1,0 +1,22 @@
+{
+  "name": "cmax-tankit",
+  "version": "1.0.0",
+  "description": "",
+  "main": "srv.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jedcalkin/cmax-tankit.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jedcalkin/cmax-tankit/issues"
+  },
+  "homepage": "https://github.com/jedcalkin/cmax-tankit#readme",
+  "dependencies": {
+    "ws": "^7.3.1"
+  }
+}
