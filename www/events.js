@@ -32,40 +32,9 @@ const jsonEvents = {
 }
 
 const events_ = {
-  // ws
-  guid: (event)=>{
-    guid = event.guid
-  },
-  test: (event)=>{
-    log(event)
-  },
-
-  // players
-  join: (event)=>{
-    log(`player ${event.guid} joined`)
-  },
-  left: (event)=>{
-    log(`player ${event.guid} left`)
-    delete(users[event.guid])
-  },
   name: (event)=>{
     log(`${event.guid} is ${event.name}`)
     users[event.guid].name = event.name
     log(users[event.guid])
   },
-  msg: (event)=>{
-    log(event)
-  },
-
-  // tank
-  pos: (event)=>{
-    log(event)
-  },
-  shot: (event)=>{
-    log(event)
-  },
-  newTank: (event)=>{
-    log(`${ event.guid } switched to tankType ${event.index}`)
-  },
 }
-
