@@ -11,12 +11,10 @@ let tank = 1 << 30
 // T[2] = Tank turning direction/speed
 // t[2] = turret angle direction/speed
 
-window.onkeypress = (e)=>{ log(`P ${e.keyCode} ${e.key}`) }
+// window.onkeypress = (e)=>{ log(`P ${e.keyCode} ${e.key}`) }
 window.onkeyup = (e)=>{ let fn = pressEvents[e.keyCode]
-   log(`U ${e.keyCode} ${e.key}`) 
   if(fn){ fn(0) } }
 window.onkeydown = (e)=>{ let fn = pressEvents[e.keyCode]
-   log(`D ${e.keyCode} ${e.key}`) 
   if(fn){ fn(1) } }
 
 const yes = (2**31)-1 // 1111111111111111111111111111111
