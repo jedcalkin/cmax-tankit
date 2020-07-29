@@ -1,28 +1,40 @@
 
-users = {}
+const state = {users:{}}
 async function eventsInit(){
-  users = await fetch('/api/game/state').then((r)=>r.json())
-  // users[guid].name = 'self'
+  state.users = await fetch('/api/users').then((r)=>r.json())
 }
 
 async function receive(e){
-  let event = parseJSON(e.data)
-  // log(event)
-  try{
-    if(users[event.guid] == null){
-      users[event.guid] = {guid:event.guid}
-    }
-    events[event.type](event)
+  let type = e.data.slice(0,1)
+  let event = e.data.slice(1)
+  try {
+    events[type](event)
   } catch(e){
+    log([e.data])
     console.error(e)
   }
 }
 
 const events = {
+  'u': (event)=>guid=event, // set guid
+  'j': (event)=>{ // json
+    event = parseJSON(event)
+    jsonEvents[event.type](event)
+  },
+}
+const jsonEvents = {
+  state:(event)=>{
+    delete(event.type)
+    for(let c in event){
+      state[c] = event[c]
+    }
+  },
+}
+
+const events_ = {
   // ws
   guid: (event)=>{
     guid = event.guid
-    log(guid)
   },
   test: (event)=>{
     log(event)
@@ -57,9 +69,3 @@ const events = {
   },
 }
 
-try {
-  module.exports = {
-    receive,
-    users
-  }
-} catch(e){}
