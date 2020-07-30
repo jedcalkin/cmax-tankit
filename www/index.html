@@ -17,7 +17,41 @@
 
 </head>
 <body style="background:#000;color:#8A4">
+<style>
+h1 {
+ padding:0.5em 2em;
+}
 
+main {
+ display: inline-grid;
+ grid-template-columns: 1fr 10em 1fr;
+ width: 100vw;
+ padding:2em 0em;
+}
+input {
+ grid-column:2/3;
+ background: inherit;
+ color: inherit;
+ border: solid 1px #8A4;
+ padding: 1em;
+}
+input:focus {
+  outline: 2px solid #8A4;
+}
+
+footer {
+ display: inline; 
+ font-family: mono;
+ position: absolute;
+ bottom: 0;
+ right: 0.5em;
+}
+footer a {
+ text-decoration: none;
+ color: #040;
+}
+
+</style>
 <h1>tankIt</h1>
 <main>
 <input placeholder="Name">

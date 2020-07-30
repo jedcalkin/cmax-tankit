@@ -91,6 +91,7 @@ setInterval(()=>{
   tank_old = tank
   ws.send((tank & v).toString(36))
 
+  if(page != 'dev'){return}
   let usrs = []
   for (u in state.users){
    usrs.push(JSON.stringify(state.users[u]))

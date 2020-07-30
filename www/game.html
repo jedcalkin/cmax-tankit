@@ -19,10 +19,42 @@
 
 </head>
 <body style="background:#000;color:#8A4">
+<style>
+screen {
+  background: #000;
 
-<h1>tankIt</h1>
+  position: absolute;
+  top:0; bottom:0; left:0; right:0;
+  display: grid;
+  grid-template-columns: 4fr 1fr;
+  grid-template-rows: 3em 2fr 1fr;
+}
+header {
+  grid-column: 1/3;  
+  font-size: 2em;
+}
+map {
+  grid-column: 1/2;  
+  grid-row: 2/4;
+  border: 1px solid #FFF;
+}
+users {
+  grid-column: 2/3;  
+  border: 1px solid #FFF;
 
+}
+mini {
+  grid-column: 2/3;  
+  border: 1px solid #FFF;
+
+}
+</style>
+<screen>
+  <header>tank<b>I</b>t</header>
+  <map><svg src="./map.svg"></svg></map>
+  <users></users>
+  <mini><svg src="./minimap.svg"></svg></mini>
+</screen>
 <p></p>
-
 </body>
 </html>

@@ -29,6 +29,7 @@ const jsonEvents = {
     for(let c in event){
       state[c] = event[c]
     }
+    display.users(state.users)
   },
 }
 
