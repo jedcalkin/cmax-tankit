@@ -1,5 +1,5 @@
-function uuidv4() {
-  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, (c) => {
+function suid() {
+  return 'xxxx-xxx'.replace(/[xy]/g, (c) => {
     var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8)
     return v.toString(16)
   })
@@ -24,30 +24,50 @@ function bcast(msg, sender){
 }
 
 function connection(ws) {
-  let guid = uuidv4()
-  ws.guid = guid
-  sockets[guid] = ws
+  let uid = suid()
+  ws.uid = uid
+  sockets[uid] = ws
 
   ws.on('message', (event)=>rec(event, ws))
   ws.on('close', ()=>{
-    delete(sockets[guid])
-    closing(guid)
+    delete(sockets[uid])
+    closing(uid)
   })
 
-  ws.send('u'+guid)
-  join(guid, ws)
+  join(uid, ws)
+  //ws.send('u'+uid)
 }
-function join(guid, ws) {
-  state.users[guid] = {guid}
+function join(uid, ws) {
+  state.users[uid] = {}
   bcast('j'+JSON.stringify({type:'state', users:state.users}))
 }
 
-function closing(guid) {
-  delete(state.users[guid])
+function closing(uid) {
+  delete(state.users[uid])
   bcast('j'+JSON.stringify({type:'state', users:state.users}))
 }
+
+tank = {event:()=>{}} // noop TODO
 
 function rec(event, ws) {
-  log(event)
+  if(event.length<4){ return tank.event() }
+  try {
+    event = JSON.parse(event)
+    jsonEvent(event, ws)
+  } catch(e) {
+    // not a json event
+    log(e)
+    log(event)
+  }
 }
 
+
+function jsonEvent(event, ws){
+  if(event.type == 'user'){
+    ws.id = event.user.id
+    delete(event.user.id)
+    event.user.uid = ws.uid
+    state.users[ws.uid] = event.user
+    bcast('j'+JSON.stringify({type:'state', users:state.users}))
+  }
+}

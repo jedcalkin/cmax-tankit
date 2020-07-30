@@ -1,6 +1,7 @@
 
 const state = {users:{}}
-async function eventsInit(){
+async function eventsInit(user){
+  ws.send(JSON.stringify({type:'user', user }))
   state.users = await fetch('/api/users').then((r)=>r.json())
 }
 

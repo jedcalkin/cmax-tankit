@@ -1,9 +1,13 @@
 
+let body = document.querySelector('body')
 let guid = 'anonymous'
-var ws = new WebSocket(`ws://${location.hostname}:17051`)
 
+let user = JSON.parse(localStorage['tankit-user'])
+body.style.color = user.colour
+
+var ws = new WebSocket(`ws://${location.hostname}:17051`)
 ws.onopen = async ()=>{
-  await eventsInit()
+  await eventsInit(user)
 }
 ws.onerror = console.error
 ws.onmessage = receive
@@ -15,3 +19,5 @@ function send(type, event){
     ...event
   }))
 }
+
+

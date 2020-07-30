@@ -1,4 +1,5 @@
 
+let tank_old = 1 << 30
 let tank = 1 << 30
 
 // 1000000000000000000000000000000
@@ -82,7 +83,18 @@ const p = document.querySelector('p')
 
 let v = ((2**16)-1)
 let b = (s)=>s.toString(2)
+let en = (s)=>s.toString(36)
+let i = 0
 setInterval(()=>{
+  i++
+  if(tank == tank_old && i%200!=0){ return }
+  tank_old = tank
+  ws.send((tank & v).toString(36))
+
+  let usrs = []
+  for (u in state.users){
+   usrs.push(JSON.stringify(state.users[u]))
+  }
 
   p.innerHTML = `
     w,a,s,d,sapce and left,right arrows
@@ -98,8 +110,12 @@ setInterval(()=>{
     <br>
     ${b(tank & v)}
     <br>
-    ${(tank & v).toString(36)}`
-  ws.send('')
+    ${(tank & v).toString(36)}
+    <br>
+    <hr>
+    <br>
+    ${usrs.join('\n<br>')}
+`
 
-},100)
+},10)
 
