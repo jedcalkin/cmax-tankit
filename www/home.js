@@ -1,6 +1,6 @@
 try{
   if(localStorage['tankit-user'].length > 3){
-    location.pathname = '/game.html'
+    location.pathname = '/game'
   }
 }catch(e){}
 
@@ -20,7 +20,7 @@ const fn = (e)=>{
       colour
     }
     localStorage['tankit-user'] = JSON.stringify(o)
-    location.pathname = '/game.html'
+    location.pathname = '/game'
   }
 }
 
