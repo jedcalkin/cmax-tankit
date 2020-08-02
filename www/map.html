@@ -1,1 +1,79 @@
-<thing>I'm a map</thing>
+
+<style>
+body {
+}
+map {
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+header {
+  z-index: 10;
+  background: #000;
+}
+users {
+  z-index: 10;
+  background: #000;
+}
+mini {
+  z-index: 10;
+  background: #000;
+}
+
+ground {
+
+  overflow: hidden;
+  display: grid;
+  transition: all 0.3s;
+
+  position:absolute;
+  height: 120vw;
+  width: 120vw;
+
+  grid-template-columns: 1frw 1fr 1fr 1fr 1fr;
+  grid-template-rows:    1fr 1fr 1fr 1fr 1fr;
+
+}
+
+c {
+   text-align: center;
+   border: 1px solid #F00;
+}
+
+/* for(i=0;i<5;i++){for(j=0;j<5;j++){  console.log(`.c${i}${j} { grid-row: ${i+1}/${i+2}; grid-column: ${j+1}/${j+2}; }`)  }} */
+.c00 { grid-row: 1/2; grid-column: 1/2; }
+.c01 { grid-row: 1/2; grid-column: 2/3; }
+.c02 { grid-row: 1/2; grid-column: 3/4; }
+.c03 { grid-row: 1/2; grid-column: 4/5; }
+.c04 { grid-row: 1/2; grid-column: 5/6; }
+.c10 { grid-row: 2/3; grid-column: 1/2; }
+.c11 { grid-row: 2/3; grid-column: 2/3; }
+.c12 { grid-row: 2/3; grid-column: 3/4; }
+.c13 { grid-row: 2/3; grid-column: 4/5; }
+.c14 { grid-row: 2/3; grid-column: 5/6; }
+.c20 { grid-row: 3/4; grid-column: 1/2; }
+.c21 { grid-row: 3/4; grid-column: 2/3; }
+.c22 { grid-row: 3/4; grid-column: 3/4; }
+.c23 { grid-row: 3/4; grid-column: 4/5; }
+.c24 { grid-row: 3/4; grid-column: 5/6; }
+.c30 { grid-row: 4/5; grid-column: 1/2; }
+.c31 { grid-row: 4/5; grid-column: 2/3; }
+.c32 { grid-row: 4/5; grid-column: 3/4; }
+.c33 { grid-row: 4/5; grid-column: 4/5; }
+.c34 { grid-row: 4/5; grid-column: 5/6; }
+.c40 { grid-row: 5/6; grid-column: 1/2; }
+.c41 { grid-row: 5/6; grid-column: 2/3; }
+.c42 { grid-row: 5/6; grid-column: 3/4; }
+.c43 { grid-row: 5/6; grid-column: 4/5; }
+.c44 { grid-row: 5/6; grid-column: 5/6; }
+
+
+</style>
+<ground style="top:-10%;left:-10%;bottom:0;right:0;">
+<c class="c00">00</c><c class="c01">01</c><c class="c02">02</c><c class="c03">03</c><c class="c04">04</c> 
+<c class="c10">10</c><c class="c11">11</c><c class="c12">12</c><c class="c13">13</c><c class="c14">14</c> 
+<c class="c20">20</c><c class="c21">21</c><c class="c22">22</c><c class="c23">23</c><c class="c24">24</c> 
+<c class="c30">30</c><c class="c31">31</c><c class="c32">32</c><c class="c33">33</c><c class="c34">34</c> 
+<c class="c40">40</c><c class="c41">41</c><c class="c42">42</c><c class="c43">43</c><c class="c44">44</c> 
+</ground>
+

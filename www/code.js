@@ -39,4 +39,12 @@ const display = {
 
 }
 
-
+// map
+let map_tag = document.querySelector('map')
+let ground_tag = undefined
+async function init(){
+  let map = await fetch('/map.html').then((r)=>r.text())
+  map_tag.innerHTML = map
+  ground_tag = map_tag.querySelector('ground')
+}
+init()

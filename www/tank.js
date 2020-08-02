@@ -87,11 +87,18 @@ let en = (s)=>s.toString(36)
 let i = 0
 setInterval(()=>{
   i++
+  if(page == 'game' && i%10==0){test()}
   if(tank == tank_old && i%200!=0){ return }
   tank_old = tank
   ws.send((tank & v).toString(36))
 
-  if(page != 'dev'){return}
+  if(page == 'dev'){devui()}
+  if(page == 'game'){test()}
+
+},10)
+
+
+function devui(){
   let usrs = []
   for (u in state.users){
    usrs.push(JSON.stringify(state.users[u]))
@@ -117,6 +124,19 @@ setInterval(()=>{
     <br>
     ${usrs.join('\n<br>')}
 `
+}
 
-},10)
+let O = { top: -10, left: -10, x: 1, y: -1}
+function test(){
 
+   if(ground_tag == undefined){return}
+
+   O.top += 1.2*O.y
+   O.left += 1*O.x
+
+   ground_tag.style.top = `${O.top}%`
+   ground_tag.style.left = `${O.left}%`
+
+  if(O.top>0 || O.top<-141){ O.y*=-1}
+  if(O.left>0 || O.left<-50){ O.x*=-1}
+}

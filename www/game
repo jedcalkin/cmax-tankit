@@ -18,8 +18,12 @@
   <script src="./code.js" type="text/javascript" defer></script>
 
 </head>
-<body style="background:#000;color:#8A4">
+<body scroll="no" style="background:#000;color:#8A4">
 <style>
+body {
+  display: block;
+  height: 100vh;
+}
 screen {
   background: #000;
 
@@ -51,10 +55,9 @@ mini {
 </style>
 <screen>
   <header>tank<b>I</b>t</header>
-  <map><svg src="./map.svg"></svg></map>
+  <map><ground></ground></map>
   <users></users>
   <mini><svg src="./minimap.svg"></svg></mini>
 </screen>
-<p></p>
 </body>
 </html>
